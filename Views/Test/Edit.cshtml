@@ -1,0 +1,30 @@
+﻿@model HealthcareSystem.Models.Test
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@section Styles {
+
+    <link href="@Url.Content("~/css/site.css")" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+}
+<div class="container mt-5">
+    <h1 class="text-muted border-bottom py-5 mt-5">Edit Test</h1>
+    <form class="form-control p-5  my-3 " method="post" asp-action="Edit">
+        <div class="form-group text-left p-2" controlid='testid'>
+            <input type="text" hidden name="testid" class="form-control" asp-for="testid" required placeholder="Test Id..." >
+        </div>
+        <div class="form-group text-left p-2" controlid='testname'>
+            <input type="text" name="testname" class="form-control" asp-for="testname" required placeholder="Test Name...">
+        </div>
+        <div class="form-group text-left p-2" controlid='testprice'>
+            <input type="text" name="testprice" class="form-control" asp-for="testprice" required placeholder="Test Price...">
+        </div>
+        <div class="form-group text-left p-2" controlid='testdescription'>
+            <textarea type="textarea" name="testdescription" class="form-control" asp-for="testdescription" required placeholder="Test Description..."></textarea>
+        </div>
+        <input type="submit" class="btn btn-block btn-outline-success mt-2" value="Edit Test" name="edit_test">
+    </form>
+</div>

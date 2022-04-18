@@ -1,0 +1,34 @@
+﻿@model HealthcareSystem.Models.Department
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@section Styles {
+
+    <link href="@Url.Content("~/css/site.css")" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+}
+<div class="container mt-5">
+    <h1 class="text-muted border-bottom py-5 mt-5">Edit Department</h1>
+    <form class="form-control p-5  my-3 " asp-action="Edit">
+        <div class="form-group text-left p-2" controlid='departamentid'>
+            <input type="text" hidden name="departamentid" class="form-control" asp-for="departamentid" required placeholder="Department Id...">
+        </div>
+        <div class="form-group text-left p-2" controlid='departmentname'>
+            <input type="text" name="departmentname" class="form-control" asp-for="departmentname" required placeholder="Department Name...">
+        </div>
+        <div class="form-group text-left p-2" controlid='departmentrooms'>
+            <input type="text" name="departmentrooms" class="form-control" asp-for="departmentrooms" required placeholder="Department Rooms...">
+        </div>
+        <div class="form-group text-left p-2" controlid='departmentdescription'>
+            <textarea type="textarea" name="departmentdescription" class="form-control" asp-for="departmentdescription" required placeholder="Department Description..."></textarea>
+        </div>
+        <input type="submit" class="btn btn-block btn-outline-success mt-2" value="Edit Department" name="edit_dep">
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

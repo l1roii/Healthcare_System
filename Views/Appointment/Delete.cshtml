@@ -1,0 +1,72 @@
+﻿@model HealthcareSystem.Models.Appointment
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+@section Styles {
+
+    <link href="@Url.Content("~/css/site.css")" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+}
+
+
+<div class="container mt-5">
+    <h1 class="text-muted border-bottom py-5 mt-5">Delete Appointment</h1>
+    <form asp-action="Delete" class="php-email-form ">
+        <div class="row mt-5">
+            <input type="hidden" asp-for="appointmentid" />
+            <div class="col-md-4 form-group">
+                <input type="text" name="username" class="form-control" id="name" asp-for="username" placeholder="Your Name" data-rule="minlen:4"
+                       data-msg="Please enter at least 4 chars">
+                <div class="validate"></div>
+            </div>
+            <div class="col-md-4 form-group">
+                <input type="text" name="userlastname" class="form-control" id="name" asp-for="userlastname" placeholder="Your Lastname" data-rule="minlen:4"
+                       data-msg="Please enter at least 4 chars">
+                <div class="validate"></div>
+            </div>
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="useremail" id="email" asp-for="useremail" placeholder="Your Email"
+                       data-rule="email" data-msg="Please enter a valid email">
+                <div class="validate"></div>
+            </div>
+            <div class="col-md-4 form-group mt-3 mt-md-0 pt-3">
+                <input type="tel" class="form-control" name="userphone" id="phone" asp-for="userphone" placeholder="Your Phone"
+                       data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                <div class="validate"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 form-group mt-3">
+                <input type="datetime" name="appointmentdate" class="form-control datepicker" asp-for="appointmentdate" id="date"
+                       placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                <div class="validate"></div>
+            </div>
+            <div class="col-md-4 form-group mt-3">
+                <select name="department" id="Department" asp-for="department" class="form-select">
+                    <option class="text-muted" value="">Select Department</option>
+                    <option class="text-muted" value="Department 1">Department 1</option>
+                    <option class="text-muted" value="Department 2">Department 2</option>
+                    <option class="text-muted" value="Department 3">Department 3</option>
+                </select>
+                <div class="validate"></div>
+            </div>
+            <div class="col-md-4 form-group mt-3">
+                <select name="doctor" id="doctor" asp-for="doctor" class="form-select">
+                    <option class="text-muted" value="">Select Doctor</option>
+                    <option class="text-muted" value="Doctor 1">Doctor 1</option>
+                    <option class="text-muted" value="Doctor 2">Doctor 2</option>
+                    <option class="text-muted" value="Doctor 3">Doctor 3</option>
+                </select>
+                <div class="validate"></div>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <textarea class="form-control" asp-for="textmessage" name="textmessage" rows="5" placeholder="Message (Optional)"></textarea>
+            <div class="validate"></div>
+        </div>
+        <input type="submit" class="btn btn-block btn-outline-danger mt-2" value="Delete Appointment" name="delete_app">
+    </form>
+</div>

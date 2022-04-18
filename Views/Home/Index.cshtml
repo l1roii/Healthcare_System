@@ -1,0 +1,241 @@
+﻿@model HealthcareSystem.Models.Appointment
+
+@using Microsoft.AspNetCore.Identity
+@using HealthcareSystem.Areas.Identity.Data;
+@using System.Security.Claims;
+
+@inject SignInManager<Users> SignInManager
+@inject UserManager<Users> UserManager
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Styles {
+
+    <link href="@Url.Content("~/css/site.css")" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+}
+
+<!--Hero-->
+<section id="hero" class="d-flex align-items-center">
+    <div class="container">
+        <h1>Welcome to our Hospital and Healthcare System</h1>
+    </div>
+</section>
+<!--Department-->
+<section id="departments" class="departments mt-5">
+    <div class="container py-5 text-center mt-3">
+        <div class="section-title">
+            <h2>About us</h2>
+        </div>
+        <div class="row pt-5">
+            <div class="col-sm-12 col-md-6">
+                <p class="lead text-justify">
+                    We tried to build an application that helps managing hospital systems
+                    better. With our application doctors and nurses will be able to take care of patients at least in a little
+                    easier way. Also our application helps the patients mkae appointments faster and more efficiently.
+                </p>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <img src="~/img/about.jpg" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Departments</h2>
+            <p>
+                Down bleow we have listet some of the departments available in our system also u can view the specifics
+                about each department.
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <ul class="nav nav-tabs flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active show" data-bs-toggle="tab">Cardiology</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-route-id="tab-1" data-bs-toggle="tab">Neurology</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-route-id="tab-2" data-bs-toggle="tab">Hepatology</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-route-id="tab-3" data-bs-toggle="tab">Pediatrics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-route-id="tab-4" data-bs-toggle="tab">Eye Care</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-9 mt-4 mt-lg-0">
+                <div class="tab-content">
+                    <div class="tab-pane active show" id="tab-1">
+                        <div class="row">
+                            <div class="col-lg-8 details order-2 order-lg-1">
+                                <h3>Cardiology</h3>
+                                <p class="fst-italic">Cardiology is a branch of medicine that deals with the disorders of the heart as well as some parts of the circulatory system.</p>
+                                <p>The field includes medical diagnosis and treatment of congenital heart defects, coronary artery disease, heart failure, valvular heart disease and electrophysiology.</p>
+                            </div>
+                            <div class="col-lg-4 text-center order-1 order-lg-2">
+                                <img src="~/img/departments-1.jpg" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-2">
+                        <div class="row">
+                            <div class="col-lg-8 details order-2 order-lg-1">
+                                <h3>Et blanditiis nemo veritatis excepturi</h3>
+                                <p class="fst-italic">
+                                    Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer
+                                    a videna mareta paulona marka
+                                </p>
+                                <p>
+                                    Ea ipsum voluptatem consequatur quis est. Illum error ullam omnis quia et reiciendis sunt sunt
+                                    est. Non aliquid repellendus itaque accusamus eius et velit ipsa voluptates. Optio nesciunt eaque
+                                    beatae accusamus lerode pakto madirna desera vafle de nideran pal
+                                </p>
+                            </div>
+                            <div class="col-lg-4 text-center order-1 order-lg-2">
+                                <img src="~/img/departments-2.jpg" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-3">
+                        <div class="row">
+                            <div class="col-lg-8 details order-2 order-lg-1">
+                                <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
+                                <p class="fst-italic">
+                                    Eos voluptatibus quo. Odio similique illum id quidem non enim fuga. Qui natus
+                                    non sunt dicta dolor et. In asperiores velit quaerat perferendis aut
+                                </p>
+                                <p>
+                                    Iure officiis odit rerum. Harum sequi eum illum corrupti culpa veritatis quisquam. Neque
+                                    necessitatibus illo rerum eum ut. Commodi ipsam minima molestiae sed laboriosam a iste odio. Earum
+                                    odit nesciunt fugiat sit ullam. Soluta et harum voluptatem optio quae
+                                </p>
+                            </div>
+                            <div class="col-lg-4 text-center order-1 order-lg-2">
+                                <img src="~/img/departments-3.jpg" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-4">
+                        <div class="row">
+                            <div class="col-lg-8 details order-2 order-lg-1">
+                                <h3>Fuga dolores inventore laboriosam ut est accusamus laboriosam dolore</h3>
+                                <p class="fst-italic">
+                                    Totam aperiam accusamus. Repellat consequuntur iure voluptas iure porro quis
+                                    delectus
+                                </p>
+                                <p>
+                                    Eaque consequuntur consequuntur libero expedita in voluptas. Nostrum ipsam necessitatibus aliquam
+                                    fugiat debitis quis velit. Eum ex maxime error in consequatur corporis atque. Eligendi asperiores
+                                    sed qui veritatis aperiam quia a laborum inventore
+                                </p>
+                            </div>
+                            <div class="col-lg-4 text-center order-1 order-lg-2">
+                                <img src=~/img/departments-4.jpg alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-5">
+                        <div class="row">
+                            <div class="col-lg-8 details order-2 order-lg-1">
+                                <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
+                                <p class="fst-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro quia.</p>
+                                <p>
+                                    Exercitationem nostrum omnis. Ut reiciendis repudiandae minus. Omnis recusandae ut non quam ut
+                                    quod eius qui. Ipsum quia odit vero atque qui quibusdam amet. Occaecati sed est sint aut vitae
+                                    molestiae voluptate vel
+                                </p>
+                            </div>
+                            <div class="col-lg-4 text-center order-1 order-lg-2">
+                                <img src=~/img/departments-5.jpg alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--Appointment-->
+<section id="appointment" class="appointment section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Make an Appointment</h2>
+            <p>
+                This is our form to make appointments you can choose the department in which you need the visit
+                and then choose the doctor whom you would like to be checked by.
+            </p>
+        </div>
+
+        <form asp-action="Create" class="php-email-form">
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <input type="text" style="border-radius:5px;" name="username" class="form-control" id="name" asp-for="username" placeholder="Your Name" data-rule="minlen:4"
+                           data-msg="Please enter at least 4 chars">
+                    <div class="validate"></div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <input type="text" style="border-radius:5px;" name="userlastname" class="form-control" id="name" asp-for="userlastname" placeholder="Your Lastname" data-rule="minlen:4"
+                           data-msg="Please enter at least 4 chars">
+                    <div class="validate"></div>
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                    <input type="email" style="border-radius:5px;" class="form-control" name="useremail" id="email" asp-for="useremail" placeholder="Your Email"
+                           data-rule="email" data-msg="Please enter a valid email">
+                    <div class="validate"></div>
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0 pt-3">
+                    <input type="tel" style="border-radius:5px;" class="form-control" name="userphone" id="phone" asp-for="userphone" placeholder="Your Phone"
+                           data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    <div class="validate"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-group mt-3">
+                    <input type="datetime" style="border-radius:5px;" name="appointmentdate" class="form-control datepicker" asp-for="appointmentdate" id="date"
+                           placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    <div class="validate"></div>
+                </div>
+                <div class="col-md-4 form-group mt-3">
+                    <select name="department" style="border-radius:5px;" id="Department" asp-for="department" class="form-select">
+                        <option class="text-muted" value="">Select Department</option>
+                        <option class="text-muted" value="Cardiology">Cardiology</option>
+                        <option class="text-muted" value="Nurology">Nurology</option>
+                        <option class="text-muted" value="Stomatology">Stomatology</option>
+                    </select>
+                    <div class="validate"></div>
+                </div>
+                <div class="col-md-4 form-group mt-3">
+                    <select name="doctor" style="border-radius:5px;" id="doctor" asp-for="doctor" class="form-select">
+                        <option class="text-muted" value="">Select Doctor</option>
+                        <option class="text-muted" value="Doctor 1">Doctor 1</option>
+                        <option class="text-muted" value="Doctor 2">Doctor 2</option>
+                        <option class="text-muted" value="Doctor 3">Doctor 3</option>
+                    </select>
+                    <div class="validate"></div>
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <textarea class="form-control" style="border-radius:5px;" asp-for="textmessage" name="textmessage" rows="5" placeholder="Message (Optional)"></textarea>
+                <div class="validate"></div>
+            </div>
+            @if (SignInManager.IsSignedIn(User))
+            {
+            <div class="text-center "><input style="border-radius:20px;" class="btn btn-outline-primary mt-5" value="Make an Appointment" type="submit"></div>
+            }
+        </form>
+
+            <p>Check appointments <a asp-controller="Appointment" asp-action="Appointment">here</a> </p>
+        
+    </div>
+</section>

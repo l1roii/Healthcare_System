@@ -1,0 +1,72 @@
+﻿@model X.PagedList.IPagedList<HealthcareSystem.Models.Test>
+@using X.PagedList.Mvc.Core;
+
+@using Microsoft.AspNetCore.Identity
+@using HealthcareSystem.Areas.Identity.Data
+
+@inject SignInManager<Users> SignInManager
+@inject UserManager<Users> UserManager
+
+@{
+    ViewData["Title"] = "Test Page";
+}
+
+@section Styles {
+
+    <link href="@Url.Content("~/css/site.css")" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+}
+<section id="department" class="py-5">
+    <div class="container text-center">
+        <h1 class="display-4 pb-1 border-bottom w-50 mx-auto pt-5 mb-5">Tests</h1>
+        @using (Html.BeginForm("Test", "Test", FormMethod.Get))
+        {
+            <p>
+                Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                <input type="submit" value="Search" />
+            </p>
+        }
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <strong class="d-inline-block mb-2 text-primary">Tests</strong>
+                            <h6 class="mb-0">
+                                <a class="text-dark" style="text-decoration:none;" href="#">Test name: @Html.DisplayFor(modelItem => item.testname) </a>
+                            </h6>
+                            <div class="mb-1 text-muted small">Test price: @Html.DisplayFor(modelItem => item.testprice) €</div>
+                            <p class="card-text mb-auto">@Html.DisplayFor(modelItem => item.testdescription)</p>
+                            <div style="display:inline;">
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                    <a class="btn btn-outline-success btn-sm" asp-action="Edit" asp-route-id="@item.testid" role="button">Edit</a>
+                                    <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.testid" role="button">Delete</a>
+                                }
+                                <a class="btn btn-outline-primary btn-sm" asp-action="Details" asp-route-id="@item.testid" role="button">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <a class="btn btn-outline-secondary" asp-action="Create">Add Test</a>
+        }
+
+        <br />
+
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Department",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+
+</section>
+
+
+
+
